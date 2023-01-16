@@ -1,0 +1,31 @@
+﻿@model aspcoremariadb.Models.Book;
+@{
+}
+
+<div class="container">
+    <h2>Book List</h2>
+    <table class="table table-responsive table-stripped">
+    <thead>
+        <tr>
+            <th>Book Title</th>
+            <th>Book Author</th>
+            <th>Book Description</th>
+           
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach(var ldata in ViewBag.list)
+{
+    <tr>
+    <td>  @ldata.Title  </td>
+    <td>  @ldata.Author  </td>
+    <td>  @ldata.Description  </td>
+    <td>  <a class="btn btn-success" href="/Demo/EditBook/@ldata.Id">Edit</a><a href="/Demo/DeleteBook/@ldata.Id" class="btn btn-danger">Delete</a>  </td>
+    </tr>
+}
+</tbody>
+</table>
+
+</div>
+

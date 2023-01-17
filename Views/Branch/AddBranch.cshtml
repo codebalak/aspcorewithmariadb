@@ -1,0 +1,78 @@
+﻿@model aspcoremariadb.Models.Branch
+
+@{
+    ViewData["Title"] = "AddBranch";
+}
+
+<h1>AddBranch</h1>
+
+<h4>Branch</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddBranch">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="branch_name"  class="control-label">Branch Name</label>
+                <input asp-for="branch_name" id="branch" class="form-control" />
+                <span asp-validation-for="branch_name" id="branch_error" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="button" value="Create" class="btn btn-primary addbranch" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+
+    <a asp-action="AllBranch" class="btn btn-success">Back to List</a>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+
+        function AddBranch()
+        {
+                var branch = $("#branch").val();
+                alert(branch);
+
+                if(branch == "" || branch == "undefine")
+                {
+                $("#branch_error").text("Please Fill Branch Name");
+                    return alert("Please Fill Branch Name");
+                }
+            $("#branch_error").text("");
+
+            $.ajax({
+                url:"/addAbranch",
+                data:{set:true,branch_name:branch},
+                method:"post",
+                dataType:"JSON",
+                success:function(response){
+                    if(response.success)
+                    {
+                        alert(response.message);
+                    }
+                    console.log(response);
+                },
+                errors:function(response)
+                {
+                    console.log(response);
+                }
+
+            });
+        }
+
+        $(".addbranch").click(function(){
+
+            AddBranch();
+
+        });
+
+    });
+</script>
+

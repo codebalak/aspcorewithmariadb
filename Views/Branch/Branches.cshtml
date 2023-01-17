@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container">
+    <h3>Branch List</h3>
+    <table class="table table-striped table-responsive" id="mybranch">
+        <thead>
+            <tr>
+            
+            <th>Branch Name</th>
+            <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="mybranchlist">
+            
+        </tbody>
+    </table>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+
+        function AllBranch() {
+                      
+                     $.ajax({
+                url: "/Allbranches",
+                data: { set: true},
+                method: "post",
+                dataType: "JSON",
+                success: function (response) {
+                    /*if (response.success) {
+                        alert(response.message);
+                    }*/
+                    console.log(response.data[0].branch_name);
+                    for(var i =0 ;i < response.data.length;i++)
+                    {
+                        console.log(response.data[i].branch_name);
+                        $("#mybranchlist").append("<tr><td>" + response.data[i].branch_name + "</td><td><a id=" + response.data[i].id + " class='edit btn btn-success'>Edit</a> &nbsp;&nbsp;&nbsp;<a id=" + response.data[i].id + " class='delete btn btn-danger'>Delete</a></td></tr>");
+                    }
+                   
+                    console.log(response);
+                },
+                errors: function (response) {
+                    console.log(response);
+                }
+
+            });
+        }
+
+        AllBranch();
+
+    });
+</script>

@@ -27,4 +27,51 @@
 </table>
 
 </div>
+<script type="text/javascript">
+            $(document).ready(function(){
+
+                    //alert("Hello");
+
+                function mybooks()
+                  {
+                    $.ajax({
+                        url:"/AjaxCRUD/getbooks",
+                        method:"get",
+                        data:{set:true},
+                        success:function(response){
+                                        
+                            console.log(response)
+                        },
+                        errors:function(response){
+                            alert("Error");
+                            console.log(response);
+                        }
+                        
+                    });
+                    
+                 }
+
+        function singlebook() {
+            $.ajax({
+                url: "/AjaxCRUD/getbook",
+                method: "get",
+                data: { set: true,id:3 },
+                success: function (response) {
+
+                    console.log(response)
+                },
+                errors: function (response) {
+                    alert("Error");
+                    console.log(response);
+                }
+
+            });
+
+        }
+
+                mybooks();
+                singlebook();
+
+            });
+</script>
 

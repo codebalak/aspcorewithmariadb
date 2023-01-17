@@ -16,6 +16,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\santosh.rauniyar\source\repos\aspcoremariadb\aspcoremariadb
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/santosh.rauniyar/source/repos/aspcoremariadb/aspcoremariadb/Views/Branch/AddBranch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoXEFkZEJyYW5jaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/santosh.rauniyar/source/repos/aspcoremariadb/aspcoremariadb/Views/Branch/Branches.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoXEJyYW5jaGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/santosh.rauniyar/source/repos/aspcoremariadb/aspcoremariadb/Views/Demo/AddBook.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGVtb1xBZGRCb29rLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

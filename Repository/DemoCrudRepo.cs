@@ -84,6 +84,26 @@ namespace aspcoremariadb.Repository
             return true;
         }
 
+        public bool Destroy(int id)
+        {
+            try
+            {
+                con = new MySqlConnection(connStr);
+                con.Open();
+
+                String queryString = "delete from book  where id=@id";
+                MySqlCommand command = new MySqlCommand(queryString, con);
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteReader();
+                con.Close();
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+        }
+
 
         public List<Book> GetSingleBook(int id)
         {

@@ -1,6 +1,7 @@
 ﻿using aspcoremariadb.Models;
 using Microsoft.AspNetCore.Mvc;
 using aspcoremariadb.Repository;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace aspcoremariadb.Controllers
 {
@@ -90,6 +91,34 @@ namespace aspcoremariadb.Controllers
 
 
             return View(booklist);
+        }
+
+
+        [HttpPost]
+        public IActionResult EditBook(Book book)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            DemoCrudRepo d = new DemoCrudRepo();
+            d.UpdateBook(book);
+            return RedirectToAction("AddBook");
+        }
+
+
+        //delete book
+
+                    public IActionResult DeleteBook(int id)
+        {
+            DemoCrudRepo d = new DemoCrudRepo();
+                    if(d.Destroy(id))
+            {
+                TempData["msg"] = "Book Removed Successfully";
+            }
+                
+            return RedirectToAction("AddBook");
+;
         }
 
     }

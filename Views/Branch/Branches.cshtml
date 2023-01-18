@@ -5,6 +5,10 @@
 }
 <div class="container">
     <h3>Branch List</h3>
+
+    <button type="button" class="btn btn-primary" data-toggle='modal' data-target='#addBranchModal'>Add Branch</button>
+
+    <a href="/addnewbranch" class="btn btn-success">Add New Branch</a>
     <table class="table table-striped table-responsive" id="mybranch">
         <thead>
             <tr>
@@ -21,6 +25,36 @@
 <script type="text/javascript">
     $(document).ready(function () {
 
+        function AddBranch(branch) {
+
+            if (branch == "" || branch == "undefine") {
+                $("#branch_error").text("Please Fill Branch Name");
+                return alert("Please Fill Branch Name");
+            }
+            $("#branch_error").text("");
+
+            $.ajax({
+                url: "/addAbranch",
+                data: { set: true, branch_name: branch },
+                method: "post",
+                dataType: "JSON",
+                success: function (response) {
+                    if (response.success) {
+
+                        AllBranch();
+                        alert(response.message);
+                        $(".close").click();
+
+                    }
+                    console.log(response);
+                },
+                errors: function (response) {
+                    console.log(response);
+                }
+
+            });
+        }
+
 
         function AllBranch() {
                       
@@ -33,11 +67,12 @@
                     /*if (response.success) {
                         alert(response.message);
                     }*/
+                    $("#mybranchlist").empty();
                     console.log(response.data[0].branch_name);
                     for(var i =0 ;i < response.data.length;i++)
                     {
                         console.log(response.data[i].branch_name);
-                        $("#mybranchlist").append("<tr><td>" + response.data[i].branch_name + "</td><td><a id=" + response.data[i].id + " class='edit btn btn-success'>Edit</a> &nbsp;&nbsp;&nbsp;<a id=" + response.data[i].id + " class='delete btn btn-danger'>Delete</a></td></tr>");
+                        $("#mybranchlist").append("<tr><td>" + response.data[i].branch_name + "</td><td><button type='button' id='" + response.data[i].id + "'   class='edit btn btn-success'>Edit</button> &nbsp;&nbsp;&nbsp;<button type='button' id=" + response.data[i].id + " class='delete btn btn-danger'>Delete</button></td></tr>");
                     }
                    
                     console.log(response);
@@ -51,5 +86,178 @@
 
         AllBranch();
 
+        function GetSingleBranch(id) {
+
+           
+            $.ajax({
+                url: "/singlebranch",
+                data: { set: true,id:id },
+                method: "post",
+                dataType: "JSON",
+                success: function (response) {
+                    /*if (response.success) {
+                        alert(response.message);
+                    }*/
+                    $("#branch_id").val(response.data[0].id);
+                    $("#branch_name").val(response.data[0].branch_name);
+                    
+
+                    console.log(response);
+                },
+                errors: function (response) {
+                    console.log(response);
+                }
+
+            });
+        }
+
+        function UpdateBranch(id,branch) {
+            /*var branch = $("#branch_name").val();
+            alert(branch);*/
+
+            if (branch == "" || branch == "undefined") {
+                $("#branch_error").text("Please Fill Branch Name");
+                return alert("Please Fill Branch Name");
+            }
+            $("#branch_error").text("");
+
+            $.ajax({
+                url: "/updateAbranch",
+                data: { set: true, branch_name: branch,id:id },
+                method: "post",
+                dataType: "JSON",
+                success: function (response) {
+                    if (response.success) {
+                        
+                        AllBranch();
+                        alert(response.message);
+                    }
+                    console.log(response);
+                },
+                errors: function (response) {
+                    console.log(response);
+                }
+
+            });
+        }
+
+        function DestroyBranch(id) {
+
+
+            $.ajax({
+                url: "/destroy",
+                data: { set: true, id: id },
+                method: "post",
+                dataType: "JSON",
+                success: function (response) {
+                   if (response.success) {
+                        AllBranch();
+                        alert(response.message);
+                    }
+                    
+
+
+                    console.log(response);
+                },
+                errors: function (response) {
+                    console.log(response);
+                }
+
+            });
+        }
+
+
+        $(document).on("click", ".edit", function () {
+            //alert("hey");
+            var id = $(this).attr('id');
+            //alert(id);
+            GetSingleBranch(id);
+            $(".modalbtn").click();
+
+
+        });
+        $(document).on("click", ".update", function () {
+           
+            var id = $("#branch_id").val();
+              var bname = $("#branch_name").val();
+            UpdateBranch(id,bname);
+            
+            //alert(id);
+            
+            $(".close").click();
+
+
+        });
+        $(".save").click(function(){
+                
+            var bname = $("#newbranch_name").val();
+            $("#newbranch_name").val('');
+           // alert(bname);
+
+            AddBranch(bname);
+           $("#newbranch_name").empty();
+        });
+        $(document).on("click",".delete",function(){
+            var id = $(this).attr('id');
+            DestroyBranch(id);
+
+        });
+
+
     });
 </script>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary modalbtn" data-toggle='modal' data-target='#exampleModalCenter' style="display:none;">
+    
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Edit A Branch</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               <form>
+                   <input  type="hidden" id="branch_id"/>
+                   <label>Branch Name</label>
+                   <input type="text" class="form-control" id="branch_name"/>
+               </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary update">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Add New Branch -->
+<!-- Modal -->
+<div class="modal fade" id="addBranchModal" tabindex="-1" role="dialog" aria-labelledby="addBranchModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Add A New Branch</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    
+                    <label>Branch Name</label>
+                    <input type="text" class="form-control" id="newbranch_name" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary save">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

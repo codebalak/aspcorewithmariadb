@@ -15,7 +15,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <style type="text/css">
-       a{ font-family: 'PT Sans', sans-serif;}
+        a {
+            font-family: 'PT Sans', sans-serif;
+        }
     </style>
 </head>
 <body>
@@ -30,10 +32,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Branch" asp-action="Branches">Branch</a>
+                            <a class="nav-link text-dark" asp-area=""  asp-route="signup">SignUp</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Demo" asp-action="AddBook">Books</a>
+                            <a class="nav-link text-dark" asp-area="" asp-route="signin">SignIn</a>
                         </li>
                     </ul>
                 </div>

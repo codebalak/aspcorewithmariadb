@@ -3973,6 +3973,14 @@
       "PackagePath": "staticwebassets\\assets\\img\\full.jpg"
     },
     {
+      "Id": "C:\\Users\\santosh.rauniyar\\source\\repos\\aspcoremariadb\\aspcoremariadb\\wwwroot\\banner\\1758.jpg",
+      "PackagePath": "staticwebassets\\banner\\1758.jpg"
+    },
+    {
+      "Id": "C:\\Users\\santosh.rauniyar\\source\\repos\\aspcoremariadb\\aspcoremariadb\\wwwroot\\banner\\6607.jpg",
+      "PackagePath": "staticwebassets\\banner\\6607.jpg"
+    },
+    {
       "Id": "C:\\Users\\santosh.rauniyar\\source\\repos\\aspcoremariadb\\aspcoremariadb\\wwwroot\\base\\accordion.html",
       "PackagePath": "staticwebassets\\base\\accordion.html"
     },

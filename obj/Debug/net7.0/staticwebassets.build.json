@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UjmAatiao7sbsrJjrjk+HTfjJlaOr8phhq/CovKFFZ8=",
+  "Hash": "/U/GxZH2tQlB+fFtof9OKpPReYEMibRfx66P+ifueno=",
   "Source": "aspcoremariadb",
   "BasePath": "_content/aspcoremariadb",
   "Mode": "Default",
@@ -16913,6 +16913,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\img\\full.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\santosh.rauniyar\\source\\repos\\aspcoremariadb\\aspcoremariadb\\wwwroot\\banner\\1758.jpg",
+      "SourceId": "aspcoremariadb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\santosh.rauniyar\\source\\repos\\aspcoremariadb\\aspcoremariadb\\wwwroot\\",
+      "BasePath": "_content/aspcoremariadb",
+      "RelativePath": "banner/1758.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\banner\\1758.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\santosh.rauniyar\\source\\repos\\aspcoremariadb\\aspcoremariadb\\wwwroot\\banner\\6607.jpg",
+      "SourceId": "aspcoremariadb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\santosh.rauniyar\\source\\repos\\aspcoremariadb\\aspcoremariadb\\wwwroot\\",
+      "BasePath": "_content/aspcoremariadb",
+      "RelativePath": "banner/6607.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\banner\\6607.jpg"
     },
     {
       "Identity": "C:\\Users\\santosh.rauniyar\\source\\repos\\aspcoremariadb\\aspcoremariadb\\wwwroot\\base\\accordion.html",

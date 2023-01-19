@@ -1,0 +1,41 @@
+﻿@model aspcoremariadb.Models.User;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+    Layout = "_Guest";
+    ViewBag.Title = "Register in the Library";
+}
+    <div class="row">
+        <h4>Register Yourself</h4>
+        <div class="col-md-4">
+            <form asp-route="Signup">
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name"  class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email">Email</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password">Password</label>
+                    <input asp-for="Password" type="password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <br />
+                <div class="form-group">
+                <button type="submit" name="signup" class="btn btn-success">SignUp</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-8"><img src="/banner/6607.jpg" class="img img-responsive" style="width:90%;" /></div>
+    </div>
+<br />
+<div>
+
+    <a asp-route="signin" class="btn btn-success">SignIn</a>
+</div>

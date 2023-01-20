@@ -64,6 +64,8 @@ namespace aspcoremariadb.Controllers
                     TempData["msg"] = "Logged In Successfully";
 
                     HttpContext.Session.SetString("username", userdata[0].Email);
+                    
+                    var st = HttpContext.Session.GetString("username");
                     return RedirectToAction("AddBook");
 
 

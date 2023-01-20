@@ -1,8 +1,11 @@
+using aspcoremariadb;
 using aspcoremariadb.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
 
 
 // Add services to the container.
@@ -20,6 +23,13 @@ builder.Services.AddSession(options =>
 var app = builder.Build();
 
 
+/*app.Run(async context =>
+{
+    await context.Response.WriteAsync("Hello world!");
+});*/
+
+
+
 
 /*builder.Services.AddDbContext<DatabaseContext>(options => options
                 .UseMySql(builder.Configuration.GetConnectionString("DefaultConnection")));*/
@@ -34,6 +44,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCustomMiddleware();
 app.UseStaticFiles();
 
 app.UseRouting();

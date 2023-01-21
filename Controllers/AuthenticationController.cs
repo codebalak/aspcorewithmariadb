@@ -11,7 +11,14 @@ namespace aspcoremariadb.Controllers
     {
 
 
-        public AuthenticationController() { }
+        public AuthenticationController() 
+        {
+
+           
+/*            HttpContext.Session.SetString("username","test");
+
+            var st = HttpContext.Session.GetString("username");*/
+        }
 
         [Route("signup")]    
             public IActionResult Signup()
@@ -49,12 +56,24 @@ namespace aspcoremariadb.Controllers
             return View();
         }
 
+        public bool Test()
+        {
+            HttpContext.Session.SetString("user", "mytest");
+
+            var sut = HttpContext.Session.GetString("user");
+            return true;
+
+        }
 
         [HttpPost]
         [Route("signin")]
         public IActionResult SignIn(User user)
         {
-            if(ModelState.IsValid)
+           /* HttpContext.Session.SetString("user","mytest");
+
+            var sut = HttpContext.Session.GetString("user");
+*/
+            if (ModelState.IsValid)
             {
                 UserRepo ur = new UserRepo();
                 List<User> userdata = ur.IsUserExist(user);
@@ -66,7 +85,7 @@ namespace aspcoremariadb.Controllers
                     HttpContext.Session.SetString("username", userdata[0].Email);
                     
                     var st = HttpContext.Session.GetString("username");
-                    return RedirectToAction("AddBook");
+                    return RedirectToRoute("books");
 
 
                 }

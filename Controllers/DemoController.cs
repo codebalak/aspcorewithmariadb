@@ -11,8 +11,8 @@ namespace aspcoremariadb.Controllers
         string connStr;
         //string connStr = "server=127.0.0.1;user=root;database=studentdb;port=3306;password=12345;";
 
-        
 
+        [Route("books")]
         public IActionResult AddBook()
         {
             DemoCrudRepo d = new DemoCrudRepo();

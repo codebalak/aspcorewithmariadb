@@ -1,5 +1,6 @@
 using aspcoremariadb;
 using aspcoremariadb.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -14,7 +15,7 @@ builder.Services.AddDistributedMemoryCache();
 
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromSeconds(10);
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
@@ -22,11 +23,12 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
-
-/*app.Run(async context =>
+app.Run(async context =>
 {
+    HttpContext.Session.SetString("mysess", "myvalue");
     await context.Response.WriteAsync("Hello world!");
-});*/
+    
+});
 
 
 
@@ -44,13 +46,14 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseSession();
 app.UseCustomMiddleware();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
-app.UseSession();
+//app.UseSession();
 
 //app.UseSession();
 app.MapControllerRoute(

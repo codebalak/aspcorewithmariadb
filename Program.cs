@@ -23,12 +23,12 @@ builder.Services.AddSession(options =>
 
 var app = builder.Build();
 
-app.Run(async context =>
+/*app.Run(async context =>
 {
-    HttpContext.Session.SetString("mysess", "myvalue");
+   // HttpContext.Session.SetString("mysess", "myvalue");
     await context.Response.WriteAsync("Hello world!");
     
-});
+});*/
 
 
 

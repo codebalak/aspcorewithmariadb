@@ -79,13 +79,23 @@ namespace aspcoremariadb.Controllers
                 List<User> userdata = ur.IsUserExist(user);
                 if(userdata.Count>0)
                 {
-                    //userdata[0].password;
-                    TempData["msg"] = "Logged In Successfully";
+                    if (userdata[0].Password == user.Password)
 
-                    HttpContext.Session.SetString("username", userdata[0].Email);
-                    
-                    var st = HttpContext.Session.GetString("username");
-                    return RedirectToRoute("books");
+                    {
+                        //userdata[0].password;
+                        TempData["msg"] = "Logged In Successfully";
+
+                        HttpContext.Session.SetString("username", userdata[0].Email);
+
+                        var st = HttpContext.Session.GetString("username");
+                        return RedirectToAction("AddBook","Demo");
+                    }
+                    else
+                    {
+                        TempData["msg"] = "Password is Invalid Please try again!";
+                        TempData["alert"] = "alert alert-danger";
+                        return RedirectToAction("SignIn", "Authentication");
+                    }
 
 
                 }

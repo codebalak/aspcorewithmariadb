@@ -8,8 +8,8 @@
 <div class="container">
     <h2>Book List</h2>
     
-            
-    @HttpContext.Session.GetString("username");
+            @TempData["msg"]
+    @*HttpContext.Session.GetString("username");*@
             
     <a class="btn btn-success" href="/Demo/NewBook">Add New Book</a>
     <table class="table table-responsive table-stripped">

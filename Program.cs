@@ -46,14 +46,14 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseSession();
-app.UseCustomMiddleware();
+//app.UseSession();last  update
+//app.UseCustomMiddleware();
 app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseAuthorization();
-//app.UseSession();
+app.UseSession();
 
 //app.UseSession();
 app.MapControllerRoute(

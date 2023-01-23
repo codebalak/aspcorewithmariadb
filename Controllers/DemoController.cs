@@ -11,10 +11,27 @@ namespace aspcoremariadb.Controllers
         string connStr;
         //string connStr = "server=127.0.0.1;user=root;database=studentdb;port=3306;password=12345;";
 
+            /*public IActionResult IsAuthenticated()
+        {
+
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("username")))
+
+            {
+               return  RedirectToAction("SignIn", "Authentication");
+            }
+
+        }*/
+
 
         
         public IActionResult AddBook()
         {
+              if(string.IsNullOrEmpty(HttpContext.Session.GetString("username")))
+
+            {
+                return RedirectToAction("SignIn","Authentication");
+            }
+
             DemoCrudRepo d = new DemoCrudRepo();
 
             /* DBConfig d = new DBConfig();

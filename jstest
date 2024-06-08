@@ -1,0 +1,52 @@
+var sqltext = "select stdname,stdcountry as country ,stdcity as city from student where district=122";
+
+var sqltextArr = sqltext.replace("select","").split("from");
+console.log(sqltextArr);
+var columnsettings = sqltextArr[0];//.replace("select");
+console.log(columnsettings.trim());
+// splitiing for colname & heading
+
+var nameheadArr  = columnsettings.split(",");
+
+// [ ' stdname as name ', 'stdcity as city ' ]
+console.log(nameheadArr);
+console.log(nameheadArr.length);
+  var colname = [];
+  var colheading = [];
+for(var i=0;i<nameheadArr.length;i++)
+{
+    
+    var colheadcolnameArr = nameheadArr[i];
+    
+    //splitting from as for seprating columnname & headname
+      colheadcolnameArr =  colheadcolnameArr.split("as");
+      
+     // [ ' stdname ', ' name ' ]
+      console.log(colheadcolnameArr);
+      
+    /*for(var j=0;j<colheadcolnameArr.length;j++)
+    {*/
+        var j = colheadcolnameArr.length;
+        if(j == 1)
+    {
+        // without as 
+        colname.push({"colname":colheadcolnameArr[0].trim()});
+        colheading.push({"colheading":colheadcolnameArr[0].trim()});
+        
+        //console.log("\ncolHeading Value "+ j + colheadcolnameArr[j]);
+    }
+    else
+    {
+        // with as 
+        colname.push({"colname":colheadcolnameArr[0].trim()});
+        colheading.push({"colheading":colheadcolnameArr[1].trim()});
+        
+        console.log("\ncolName Value "+ j+ colheadcolnameArr[j]); 
+    }
+        
+    //}
+    
+}
+
+console.log(colname);
+console.log(colheading);
